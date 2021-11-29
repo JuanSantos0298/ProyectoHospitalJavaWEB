@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Historia clinica</title>
+</head>
+<body>
+    <!--Header-->
+    <nav class="navbar navbar-expand-lg" style="background-color: #EE6E73">
+        <div class="container-fluid">
+          <a class="navbar-brand" style="color: white;">MedApp</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" style="color: white" href="#">Pacientes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" style="color: white" href="#">Agregar nuevo paciente</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" style="color: white" href="#">Cerrar sesion</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+      <form action=""></form>
+    <div class="container"></div>
+        <h4 style="text-align: center;">Nuevo historial</h4>
+        <div class="container">
+            <br>
+            <div>
+                Datos medicos
+            </div>
+            <br>
+        <form class="row g-3">
+            <div class="col-md-4">
+              <label for="peso_paciente" class="form-label">Peso</label>
+              <input type="text" class="form-control" id="peso_paciente" value="" required>
+            </div>
+            <div class="col-md-4">
+              <label for="altura_p" class="form-label">Altura</label>
+              <input type="text" class="form-control" id="altura_p" value="" required>
+            </div>
+            <div class="col-md-4">
+                <label for="antecendentes_p" class="form-label">Antecedentes</label>
+                <input type="text" class="form-control" id="antecendentes_p" value="" required>
+              </div>
+              <div class="col-md-4">
+                <label for="motivo_p" class="form-label">Motivo de consulta</label>
+                <input type="text" class="form-control" id="motivo_p" value="" required>
+              </div>
+              <div class="col-md-4">
+                <label for="fecha_ingreso_p" class="form-label">Fecha de ingreso</label>
+                <input type="text" class="form-control" id="fecha_ingreso_p" value="" required>
+              </div>
+              <div class="col-md-4">
+                <label for="medicacion_p" class="form-label">Medicacion</label>
+                <input type="text" class="form-control" id="medicacion_p" value="" required>
+              </div>
+              <div class="col-md-4">
+                <label for="alergias_p" class="form-label">Alergias</label>
+                <input type="text" class="form-control" id="alergias_p" value="" required>
+              </div>
+            <div>
+              <button style="color: white; background-color: #26a69a " class="btn float-end" type="submit">Agregar</button>
+              <button style=" color: white;background-color: #26a69a " class="btn float-end" type="submit">Borrar campos</button>
+            </div>
+        </div>
+          </form>
+
+   <table class="table table-striped">
+        <thead>
+            <h4 style="text-align: center;"> Lista de pacientes</h4>
+        </thead>
+        <div class="container">
+            <tbody>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Direccion</th>
+                    <th>Telefono</th>
+                    <th>Edad</th>
+                    <th>Estado Civil</th>
+                    <th>Seguro Medico</th>
+                    <th>
+                        <form>
+                            <input placeholder="Nombre del paciente" name="clave" type="text" type="search" required>
+                    </th>
+                    <th>
+                        <button type="submit">Buscar</button>
+                    </th>
+
+
+                    </form>
+                </tr>
+                <td>Prueba</td>
+                <td>Prueba</td>
+                <td>Prueba</td>
+                <td>Prueba</td>
+                <td>Prueba</td>
+                <td>Prueba</td>
+                <td>Prueba</td>
+                <td>Prueba</td>
+                <td>Prueba</td>
+                <td>
+                    <form action="">
+                        <input type="hidden" name="idPaciente" value="">
+                        <a href=""><button class="text-info">&#x1f4c1;Historial Clinico</button></a>
+                    </form>
+                </td>
+                <td>
+                    <form action="">
+                        <input type="hidden" name="idPaciente" value="">
+                        <a href=""> <button class="text-info">&#x1f4dd;Editar</button></a>
+                    </form>
+                </td>
+                <td>
+                    <form action="">
+                        <input type="hidden" name="id_eliminar" value="">
+                        <button class="text-danger right">&#x1f5d1;Eliminar</button></a>
+                    </form>
+                </td>
+            </tbody>
+        </div>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+      <!-- Footer -->
+<footer class="text-center text-lg-start " style="background-color: #EE6E73">
+    <!-- Section: Links  -->
+    <section class="">
+      <div class="container text-center text-md-start mt-5">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <!-- Content -->
+            <h6 class="text-uppercase  mb-4" style="color: white" >
+              <i class="fas fa-gem me-3"></i>MedApp
+            </h6>
+            <p style="color: white;">
+                Una aplicación para una mejor atención a quienes la más lo
+                necesitan
+            </p>
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 style="color: white" class="text-uppercase  mb-4" >
+              links
+            </h6>
+            <p style="color: white;">
+              <a href="#!" class="text-reset" >Pacientes</a>
+            </p>
+            <p style="color: white;">
+              <a href="#!" class="text-reset">Agregar paciente</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+  
+
+  
+  
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05); box-shadow: grey ">
+      © 2021 Copyright
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+</body>
+</html>
