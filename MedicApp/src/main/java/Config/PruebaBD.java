@@ -1,4 +1,4 @@
-package main;
+package Config;
 
 //Importamos las librerias correspondientes
 import java.sql.Connection;
