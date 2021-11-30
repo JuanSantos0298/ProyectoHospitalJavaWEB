@@ -29,85 +29,47 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-dark" style="color: white; border: none; margin-left: 15px" href="#">Resumen</a>
+                        <a class="nav-link btn btn-outline-dark" style="color: white; border: none; margin-left: 15px" href="Controlador?accion=Resumen" target="myFrame">Resumen</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-dark" style="color: white; border: none; margin-left: 15px" href="#">Listado paciente</a>
+                        <a class="nav-link btn btn-outline-dark" style="color: white; border: none; margin-left: 15px" href="Controlador?accion=Pacientes" target="myFrame">Listado paciente</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-dark" style="color: white; border: none; margin-left: 15px" href="#">Nuevo paciente</a>
+                        <a class="nav-link btn btn-outline-dark" style="color: white; border: none; margin-left: 15px" href="Controlador?accion=NuevoPaciente" target="myFrame">Nuevo paciente</a>
                     </li>
                 </ul>
             </div>
             <!-- BARRA NAVEGACION - LISTADO DE OPCIONES DE PERFIL -->
-            <div class="dropdown">
+            <div class="dropstart">
                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown link
+                  ${medico.getNombre()}
                 </a>
-
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                
+                <ul class="dropdown-menu text-center dropdown-menu-dark" aria-labelledby="dropdownMenuLink">
+                  <li><a class="dropdown-item" href="#">
+                        <img src="Imagenes/usuario.png" alt="60" width="60"/>
+                   </a></li>
+                  <li><a class="dropdown-item" href="Controlador?accion=EditarPerfil" target="myFrame">Editar Perfil</a></li>
+                  <li>
+                      <form action="Validar" method="POST">
+                          
+                          <button name="accion" value="Salir" class="dropdown-item" href="#">Cerrar Sesión</button>
+                      </form>
+                  </li>
                 </ul>
             </div>
         </div>
     </nav>
     
-    <!-- BIENVENIDA AL USUARIO -->
-    <header class="py-5" style="background-color: #5080BF">
-    <div class="container px-4 px-lg-5 my-5">
-        <div class="text-center text-white">
-            <h1 class="display-6 fw-bolder">Bienvenido(a) </h1>
-            <p class="lead fw-normal text-white-50 mb-0">¡Gestiona tus consultas y pacientes!</p>
-        </div>
+    <div class="m-4" style="height: 530px">
+        <iframe name="myFrame" style="height: 100%; width: 100%; border: none"></iframe>
     </div>
-    </header>
     
-   
+                
     <!-- Footer -->
     <footer class="text-center text-lg-start " style="background-color: #2F3D59">
         <!-- Section: Links  -->
-        <section class="">
-            <div class="container text-center text-md-start mt-5">
-                <!-- Grid row -->
-                <div class="row mt-3">
-                    <!-- Grid column -->
-                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                        <!-- Content -->
-                        <h6 class="text-uppercase  mb-4" style="color: white">
-                            <i class="fas fa-gem me-3"></i>MedApp
-                        </h6>
-                        <p style="color: white;">
-                            Una aplicación para una mejor atención a quienes la más lo
-                            necesitan
-                        </p>
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                        <!-- Links -->
-                        <h6 style="color: white" class="text-uppercase  mb-4">
-                            links
-                        </h6>
-                        <p style="color: white;">
-                            <a href="#!" class="text-reset">Pacientes</a>
-                        </p>
-                        <p style="color: white;">
-                            <a href="#!" class="text-reset">Agregar paciente</a>
-                        </p>
-                    </div>
-                    <!-- Grid column -->
-
-
-
-
-                    <!-- Copyright -->
-                    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05); box-shadow: grey ">
-                        © 2021 Copyright
-                    </div>
-                    <!-- Copyright -->
+        
     </footer>
     <!-- Footer -->
     
