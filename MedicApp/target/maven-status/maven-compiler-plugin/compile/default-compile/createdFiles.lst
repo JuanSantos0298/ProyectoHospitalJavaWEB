@@ -1,0 +1,12 @@
+Modelo\MedicoDAO.class
+Modelo\Paciente.class
+Controlador\Controller.class
+Config\PruebaConexionBD.class
+Controlador\Controlador.class
+Modelo\Medico.class
+Modelo\HistoriaMedica.class
+Controlador\Validar.class
+Config\PruebaBD.class
+Modelo\HistoriaMedicaDAO.class
+Modelo\PacienteDAO.class
+Config\ConexionBD.class
