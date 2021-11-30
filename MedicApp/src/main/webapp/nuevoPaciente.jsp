@@ -10,8 +10,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-        <title>Listado Pacientes</title>
     </head>
     <body>
         <!-- BINVENIDA -->
@@ -23,8 +21,10 @@
                 </div>
             </div>
         </header>
-        <main class="container mt-5 ">
-            <form name="NuevoPaciente" action="Controlador?accion=RegistrarPaciente" method="POST">
+        
+        <div class="container mt-5 ">
+            <form action="Controlador?menu=Pacientes" method="POST">
+                <input type="hidden" class="form-control" name="idMedico" value="${idMedico}">
                 <div class="row align-items-start">
                     <div class="col">
                         <label for="Nombre" class="form-label">Nombre:</label>
@@ -58,10 +58,10 @@
                         </select>
                     </div>   
                  </div>
-                <div class="row align-items-start mt-4">
+                <div class="row align-items-start mt-4 mb-5">
                     <div class="col">
                         <label for="Direccion" class="form-label">Dirección:</label>
-                        <input type="text" class="form-control" name="Direccions" placeholder="Ingrese la dirección">
+                        <input type="text" class="form-control" name="Direccion" placeholder="Ingrese la dirección">
                     </div>
                     <div class="col">
                         <label for="Seguro" class="form-label">Seguro</label>
@@ -73,11 +73,12 @@
                     </div>
                 </div>
                 <div class="d-grid gap-2 mt-5">
-                    <button class="btn" style="background-color: #F2D022" type="submit">Registrar paciente</button>
+                    <input type="submit" name="accion" value = "Agregar Paciente" class="btn">
                 </div>
                 
+                
             </form>
-        <main/>
+        <div/>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </body>
 </html>

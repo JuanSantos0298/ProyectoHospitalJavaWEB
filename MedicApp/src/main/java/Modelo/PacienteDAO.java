@@ -26,7 +26,7 @@ public class PacienteDAO {
     int r;
 
     public List listar(){
-        String sql = "SELECT * FROM paciente";
+        String sql = "SELECT * FROM paciente ";
         List<Paciente> lista = new ArrayList<>();
         try{
             con=cn.getConnection();
@@ -54,13 +54,13 @@ public class PacienteDAO {
     }
     
     public int agregar(Paciente paciente){
-        String sql = "INSERT INTO paciente(nombre, apellido_paterno, apellido_materno, telefono, direccion, seguroMedico, edad, estadoCivil, medicoAsignado) "
-                + "VALUES (?,?,?,?,?,?,?,?,?)";
+        System.out.println("PacienteDAO::agregar -- Agregando paciente");
+        String sql = "INSERT INTO paciente(nombre, apellido_paterno, apellido_materno, telefono, direccion, seguroMedico, edad, estadoCivil, medicoAsignado) VALUES (?,?,?,?,?,?,?,?,?)";
         try{
             con=cn.getConnection();
             ps=con.prepareStatement(sql);
             ps.setString(1, paciente.getNombre());
-            ps.setString(2, paciente.apellidoPaterno);
+            ps.setString(2, paciente.getApellidoPaterno());
             ps.setString(3, paciente.getApellidoMaterno());
             ps.setString(4, paciente.getTelefono());
             ps.setString(5, paciente.getDireccion());
@@ -69,10 +69,11 @@ public class PacienteDAO {
             ps.setString(8, paciente.getEstadoCivil());
             ps.setInt(9, paciente.getMedicoAsignado());
             ps.executeUpdate();
-        } catch (Exception e){
-            
+        } catch (SQLException e){
+                    System.out.println("PacienteDAO::agregar -- Algo salio mal!:c");
+                    System.out.println(e);
         }
-        return r;
+        return 1;
     }
     
     public Paciente listarId(int id){
@@ -103,30 +104,31 @@ public class PacienteDAO {
     }
     
      public int actualizar(Paciente paciente){
-        String sql = "UPDATE paciente set nombre=?, apellido_paterno=?, apellido_materno=?, telefono=?, direccion=?, seguroMedico=?, edad=?, estadoCivil=?, medicoAsignado=?"
+        String sql = "UPDATE paciente set nombre=?, apellido_paterno=?, apellido_materno=?, telefono=?, direccion=?, seguroMedico=?, edad=?, estadoCivil=?"
                 + "WHERE id_paciente = ?";
         try{
             con=cn.getConnection();
             ps=con.prepareStatement(sql);
             ps.setString(1, paciente.getNombre());
-            ps.setString(2, paciente.apellidoPaterno);
+            ps.setString(2, paciente.getApellidoPaterno());
             ps.setString(3, paciente.getApellidoMaterno());
             ps.setString(4, paciente.getTelefono());
             ps.setString(5, paciente.getDireccion());
             ps.setString(6, paciente.getSeguroMedico());
             ps.setInt(7, paciente.getEdad());
             ps.setString(8, paciente.getEstadoCivil());
-            ps.setInt(9, paciente.getMedicoAsignado());
-            ps.setInt(10, paciente.idPaciente);
+            ps.setInt(9, paciente.getIdPaciente());
             ps.executeUpdate();
         } catch (Exception e){
-            
+            System.out.println("PacienteDAO::actualizar ERROR:"+e);
         }
         return r;
     }
      
      public void delete(int id){
-         String sql = "DELETE FROM paciente WHERE id_paciente =" + id;
+         System.out.println("PacienteDAO::EliminarPaciente");
+         String sql = "delete from paciente where id_paciente = "+id+"";
+         System.out.println(sql);
          try{   
              con = cn.getConnection();
              ps = con.prepareStatement(sql);

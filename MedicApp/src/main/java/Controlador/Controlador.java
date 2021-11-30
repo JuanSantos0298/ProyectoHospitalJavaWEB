@@ -5,10 +5,13 @@
  */
 package Controlador;
 
+import Modelo.Medico;
+import Modelo.MedicoDAO;
 import Modelo.Paciente;
 import Modelo.PacienteDAO;
 import java.io.IOException;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,68 +21,141 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author alex4
  */
-public class Controlador extends HttpServlet {
-
-    Paciente paciente = new Paciente();
-    PacienteDAO pacientedao = new PacienteDAO();
-    int idPaciente;
+public class Controlador extends HttpServlet {    
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         
+        /* variables paciente */
+        Paciente paciente = new Paciente();
+        PacienteDAO pacientedao = new PacienteDAO();
+        int idPaciente;
+        String nombre;
+        String apellidoPaterno;
+        String apellidoMaterno;
+        int edad;
+        String telefono;
+        String estadoCivil;
+        String direccion;
+        String seguroMedico;
+
+        /* Variables medico */
+        int idMedico;
+        /* VARIABLES CONTROLADOR */
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
+        RequestDispatcher dispatcher = null;
         
-        if(menu.equals("Principal")){
-            request.getRequestDispatcher("principal.jsp").forward(request, response);
+        if(menu.equalsIgnoreCase("Principal")){
+            dispatcher = request.getRequestDispatcher("principal.jsp");
+            dispatcher.forward(request, response);
         }
-        if(menu.equals("Resumen")){
-            switch (accion) {
-                case "ListarResumen":
-                    
-                    break;
-                case "VerConsulta":
-                    
-                    break;
-            }
-            request.getRequestDispatcher("resumen.jsp").forward(request, response);
-        }
+        
         if(menu.equals("Pacientes")){
-            switch (accion) {
-                case "Listar":
+            switch (accion) 
+            {
+                case "Listar": //OK
+                    System.out.println("Listar pacientes");
                     List lista = pacientedao.listar();
+                    dispatcher = request.getRequestDispatcher("pacientes.jsp");
                     request.setAttribute("pacientes", lista);
+                    dispatcher.forward(request, response);
                     break;
-                case "VerHistorialMedico":
-                    idPaciente = Integer.parseInt(request.getParameter("idPaciente"));
-                    Paciente pacienteHistorial = pacientedao.listarId(idPaciente);
-                    request.setAttribute("paciente", pacienteHistorial);
-                    request.getRequestDispatcher("historialMedico.jsp").forward(request, response);
-                    break;
-                case "EditarPaciente":
+                case "VerHistorialMedico":  //Pendiente
+                    System.out.println("Historial Paciente");
                     
-
+                                        
                     break;
-                case "EliminarPaciente":
+                case "EditarPaciente": //OK
+                    System.out.println("Editar paciente");
+                    idPaciente = Integer.parseInt(request.getParameter("idPaciente"));
+                    Paciente pacienteEdicion = pacientedao.listarId(idPaciente);
+                    dispatcher = request.getRequestDispatcher("editarPaciente.jsp");
+                    request.setAttribute("paciente", pacienteEdicion);
+                    dispatcher.forward(request, response);
+                    break;
+                case "ActualizarPaciente": //OK
+                    System.out.println("Actualizar Paciente");
+                    idPaciente = Integer.parseInt(request.getParameter("idPaciente"));
+                    nombre= request.getParameter("Nombre");
+                    apellidoPaterno= request.getParameter("ApellidoPaterno");
+                    apellidoMaterno= request.getParameter("ApellidoMaterno");
+                    edad = Integer.parseInt(request.getParameter("Edad"));
+                    telefono= request.getParameter("Telefono");
+                    estadoCivil= request.getParameter("EstadoCivil");
+                    direccion= request.getParameter("Direccion");
+                    seguroMedico= request.getParameter("Seguro");
+                    
+                    paciente.setIdPaciente(idPaciente);
+                    paciente.setNombre(nombre);
+                    paciente.setApellidoPaterno(apellidoPaterno);
+                    paciente.setApellidoMaterno(apellidoMaterno);
+                    paciente.setEdad(edad);
+                    paciente.setTelefono(telefono);
+                    paciente.setEstadoCivil(estadoCivil);
+                    paciente.setDireccion(direccion);
+                    paciente.setSeguroMedico(seguroMedico);
+                    
+                    pacientedao.actualizar(paciente);
+                    
+                    
+                    lista = pacientedao.listar();
+                    dispatcher = request.getRequestDispatcher("pacientes.jsp");
+                    request.setAttribute("pacientes", lista);
+                    dispatcher.forward(request, response);
+                    //request.getRequestDispatcher("Controlador?menu=Pacientes&accion=Listar").forward(request, response);
+                    break;
+                case "NuevoPaciente": //OK
+                    System.out.println("Nuevo Paciente");
+                    idMedico = Integer.parseInt(request.getParameter("idMedico"));
+                    request.setAttribute("idMedico", idMedico);
+                    request.getRequestDispatcher("nuevoPaciente.jsp").forward(request, response);
+                    break;
+                case "Agregar Paciente": //OK
+                    System.out.print("Estoy agregando paciente");
+                    nombre= request.getParameter("Nombre");
+                    apellidoPaterno= request.getParameter("ApellidoPaterno");
+                    apellidoMaterno= request.getParameter("ApellidoMaterno");
+                    edad = Integer.parseInt(request.getParameter("Edad"));
+                    telefono= request.getParameter("Telefono");
+                    estadoCivil= request.getParameter("EstadoCivil");
+                    direccion= request.getParameter("Direccion");
+                    seguroMedico= request.getParameter("Seguro");
+                    idMedico = Integer.parseInt(request.getParameter("idMedico"));
+                    
+                    paciente.setNombre(nombre);
+                    paciente.setApellidoPaterno(apellidoPaterno);
+                    paciente.setApellidoMaterno(apellidoMaterno);
+                    paciente.setEdad(edad);
+                    paciente.setTelefono(telefono);
+                    paciente.setEstadoCivil(estadoCivil);
+                    paciente.setDireccion(direccion);
+                    paciente.setSeguroMedico(seguroMedico);
+                    paciente.setMedicoAsignado(idMedico);
+                    
+                    pacientedao.agregar(paciente);
+                    //request.getRequestDispatcher("Controlador?menu=Pacientes&accion=Listar").forward(request, response);
+                    
+                    lista = pacientedao.listar();
+                    request.setAttribute("pacientes", lista);
+                    dispatcher = request.getRequestDispatcher("pacientes.jsp");
+                    dispatcher.forward(request, response);
+                    break;
+                    
+                case "EliminarPaciente": //OK
                     idPaciente = Integer.parseInt(request.getParameter("idPaciente"));
                     pacientedao.delete(idPaciente);
-                    request.getRequestDispatcher("Controlador?menu=Pacientes&accion=Listar").forward(request, response);
-                    break;
-            }
-            request.getRequestDispatcher("pacientes.jsp").forward(request, response);
-        }
-        if(menu.equals("NuevoPaciente")){
-            switch (accion) {
-                case "AgregarPaciente":
                     
+                    System.out.print(idPaciente);
+                    System.out.println("Eliminar paciente");
+                    
+                    
+                    lista = pacientedao.listar();
+                    request.setAttribute("pacientes", lista);
+                    dispatcher = request.getRequestDispatcher("pacientes.jsp");
+                    dispatcher.forward(request, response);
                     break;
             }
-            request.getRequestDispatcher("nuevoPaciente.jsp").forward(request, response);
-        }
-        if(menu.equals("EditarPerfil")){
-            
-            request.getRequestDispatcher("editarPerfil.jsp").forward(request, response);
         }
     }
 

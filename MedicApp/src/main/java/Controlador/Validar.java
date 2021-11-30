@@ -67,6 +67,7 @@ public class Validar extends HttpServlet {
             throws ServletException, IOException {
         //(processRequest(request, response);
         String accion = request.getParameter("accion");
+        
         if(accion.equalsIgnoreCase("Ingresar")){
             String usuario = request.getParameter("usuario");
             String password = request.getParameter("password");

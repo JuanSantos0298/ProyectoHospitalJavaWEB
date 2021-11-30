@@ -35,7 +35,7 @@
                         <a class="nav-link btn btn-outline-dark" style="color: white; border: none; margin-left: 15px" href="Controlador?menu=Pacientes&accion=Listar" target="myFrame">Listado paciente</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-dark" style="color: white; border: none; margin-left: 15px" href="Controlador?menu=NuevoPaciente" target="myFrame">Nuevo paciente</a>
+                        <a class="nav-link btn btn-outline-dark" style="color: white; border: none; margin-left: 15px" href="Controlador?menu=Pacientes&accion=NuevoPaciente&idMedico=${medico.getIdMedico()}" target="myFrame">Nuevo paciente</a>
                     </li>
                 </ul>
             </div>

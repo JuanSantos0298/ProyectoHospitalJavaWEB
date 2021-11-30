@@ -32,7 +32,8 @@ public class ConexionBD {
            Class.forName("com.mysql.cj.jdbc.Driver");
             conectar = DriverManager.getConnection(URL, User, Pass);
            
-           sentencia = conectar.createStatement();          
+           sentencia = conectar.createStatement();
+           System.out.println("ConexionBD::getConnection -- Conexion exitosa");
        }
        catch (Exception e){
            System.out.print(e.getMessage());
