@@ -29,13 +29,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-dark" style="color: white; border: none; margin-left: 15px" href="Controlador?accion=Resumen" target="myFrame">Resumen</a>
+                        <a class="nav-link btn btn-outline-dark" style="color: white; border: none; margin-left: 15px" href="Controlador?menu=Resumen" target="myFrame">Resumen</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-dark" style="color: white; border: none; margin-left: 15px" href="Controlador?accion=Pacientes" target="myFrame">Listado paciente</a>
+                        <a class="nav-link btn btn-outline-dark" style="color: white; border: none; margin-left: 15px" href="Controlador?menu=Pacientes&accion=Listar" target="myFrame">Listado paciente</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-dark" style="color: white; border: none; margin-left: 15px" href="Controlador?accion=NuevoPaciente" target="myFrame">Nuevo paciente</a>
+                        <a class="nav-link btn btn-outline-dark" style="color: white; border: none; margin-left: 15px" href="Controlador?menu=NuevoPaciente" target="myFrame">Nuevo paciente</a>
                     </li>
                 </ul>
             </div>
@@ -49,7 +49,7 @@
                   <li><a class="dropdown-item" href="#">
                         <img src="Imagenes/usuario.png" alt="60" width="60"/>
                    </a></li>
-                  <li><a class="dropdown-item" href="Controlador?accion=EditarPerfil" target="myFrame">Editar Perfil</a></li>
+                  <li><a class="dropdown-item" href="Controlador?menu=EditarPerfil" target="myFrame">Editar Perfil</a></li>
                   <li>
                       <form action="Validar" method="POST">
                           
@@ -61,15 +61,34 @@
         </div>
     </nav>
     
-    <div class="m-4" style="height: 530px">
+    <div class="m-4" style="height: 850px">
         <iframe name="myFrame" style="height: 100%; width: 100%; border: none"></iframe>
     </div>
     
                 
     <!-- Footer -->
-    <footer class="text-center text-lg-start " style="background-color: #2F3D59">
-        <!-- Section: Links  -->
-        
+    <footer class="text-center text-white" style="background-color: #2F3D59;">
+      <!-- Grid container -->
+      <div class="container p-4 pb-0">
+        <!-- Section: CTA -->
+        <section class="">
+          <p class="d-flex justify-content-center align-items-center">
+            <span class="me-3">MedApp</span>
+          </p>
+          <p>
+            Una aplicación para una mejor atención a quienes la más lo
+            necesitan
+          </p>
+        </section>
+        <!-- Section: CTA -->
+      </div>
+      <!-- Grid container -->
+  
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2021 Copyright: MedicApp
+      </div>
+      <!-- Copyright -->
     </footer>
     <!-- Footer -->
     

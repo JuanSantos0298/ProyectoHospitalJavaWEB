@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,6 +24,59 @@
                 </div>
             </div>
         </header>
+         <div class="d-grid gap-2 mt-5">
+             <form action="Controlador?menu=Pacientes" method="POST">
+                <div class="input-group mb-3">
+                    <input type="text" value="Agregar" name="palabraBuscada" class="form-control" placeholder="Buscar un paciente" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <button value="AgregarPaciente" class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>
+                </div>
+             </form>
+        </div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Direccion</th>
+                    <th>Telefono</th>
+                    <th>Edad</th>
+                    <th>Estado Civil</th>
+                    <th>Seguro Medico</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="paciente" items="${pacientes}">
+                    <tr>
+                        <td>${paciente.getIdPaciente()}</td>
+                        <td>${paciente.getNombre()}</td>
+                        <td>${paciente.getApellidoPaterno()}</td>
+                        <td>${paciente.getApellidoMaterno()}</td>
+                        <td>${paciente.getDireccion()}</td>
+                        <td>${paciente.getTelefono()}</td>
+                        <td>${paciente.getEdad()}</td>
+                        <td>${paciente.getEstadoCivil()}</td>
+                        <td>${paciente.getSeguroMedico()}</td>
+                        <td>
+                            <div class="dropdown">
+                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Acciones
+                                </a>
+                                
+                            
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                  <li><a class="dropdown-item" href="Controlador?menu=Pacientes&accion=VerHistorialMedico&idPaciente=${paciente.getIdPaciente()}">Historial Médico</a></li>
+                                  <li><a class="dropdown-item" href="Controlador?menu=Pacientes&accion=EditarPaciente&idPaciente=${paciente.getIdPaciente()}">Editar</a></li>
+                                  <li><a class="dropdown-item"  href="Controlador?menu=Pacientes&accion=EliminarPaciente&idPaciente=${paciente.getIdPaciente()}">Eliminar</a></li>
+                                </ul>
+                              </div>
+                        </td>
+                    </tr> 
+                </c:forEach>
+            </tbody>
+        </table>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </body>
 </html>

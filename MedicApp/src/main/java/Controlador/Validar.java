@@ -73,7 +73,7 @@ public class Validar extends HttpServlet {
             medico = medicodao.validar(usuario, password);
             if(medico.getNombre() != null){   //Si el objeto no esta vacio
                 request.setAttribute("medico", medico);
-                request.getRequestDispatcher("Controlador?accion=Principal").forward(request, response);
+                request.getRequestDispatcher("Controlador?menu=Principal").forward(request, response);
             }else{
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }

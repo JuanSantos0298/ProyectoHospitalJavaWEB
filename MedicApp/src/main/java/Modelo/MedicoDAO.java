@@ -43,4 +43,6 @@ public class MedicoDAO {
         return med;
     }
     
+    /* OPERACIONES CRUD*/
+    
 }

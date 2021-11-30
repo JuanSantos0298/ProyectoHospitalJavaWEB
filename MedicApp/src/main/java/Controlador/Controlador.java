@@ -5,8 +5,10 @@
  */
 package Controlador;
 
+import Modelo.Paciente;
+import Modelo.PacienteDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,36 +20,66 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Controlador extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    Paciente paciente = new Paciente();
+    PacienteDAO pacientedao = new PacienteDAO();
+    int idPaciente;
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        
+        String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
-        switch(accion){
-            case "Principal":
-                request.getRequestDispatcher("principal.jsp").forward(request, response);
-                break;
-            case "Resumen":
-                request.getRequestDispatcher("resumen.jsp").forward(request, response);
-                break;
-            case "Pacientes":
-                request.getRequestDispatcher("pacientes.jsp").forward(request, response);
-                break;
-            case "NuevoPaciente":
-                request.getRequestDispatcher("nuevoPaciente.jsp").forward(request, response);
-                break;
-            case "EditarPerfil":
-                request.getRequestDispatcher("editarPerfil.jsp").forward(request, response);
-                break;
-            default:
-                throw new AssertionError();
+        
+        if(menu.equals("Principal")){
+            request.getRequestDispatcher("principal.jsp").forward(request, response);
+        }
+        if(menu.equals("Resumen")){
+            switch (accion) {
+                case "ListarResumen":
+                    
+                    break;
+                case "VerConsulta":
+                    
+                    break;
+            }
+            request.getRequestDispatcher("resumen.jsp").forward(request, response);
+        }
+        if(menu.equals("Pacientes")){
+            switch (accion) {
+                case "Listar":
+                    List lista = pacientedao.listar();
+                    request.setAttribute("pacientes", lista);
+                    break;
+                case "VerHistorialMedico":
+                    idPaciente = Integer.parseInt(request.getParameter("idPaciente"));
+                    Paciente pacienteHistorial = pacientedao.listarId(idPaciente);
+                    request.setAttribute("paciente", pacienteHistorial);
+                    request.getRequestDispatcher("historialMedico.jsp").forward(request, response);
+                    break;
+                case "EditarPaciente":
+                    
+
+                    break;
+                case "EliminarPaciente":
+                    idPaciente = Integer.parseInt(request.getParameter("idPaciente"));
+                    pacientedao.delete(idPaciente);
+                    request.getRequestDispatcher("Controlador?menu=Pacientes&accion=Listar").forward(request, response);
+                    break;
+            }
+            request.getRequestDispatcher("pacientes.jsp").forward(request, response);
+        }
+        if(menu.equals("NuevoPaciente")){
+            switch (accion) {
+                case "AgregarPaciente":
+                    
+                    break;
+            }
+            request.getRequestDispatcher("nuevoPaciente.jsp").forward(request, response);
+        }
+        if(menu.equals("EditarPerfil")){
+            
+            request.getRequestDispatcher("editarPerfil.jsp").forward(request, response);
         }
     }
 
