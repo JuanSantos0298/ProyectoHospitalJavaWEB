@@ -5,6 +5,8 @@
  */
 package Controlador;
 
+import Modelo.HistoriaMedica;
+import Modelo.HistoriaMedicaDAO;
 import Modelo.Medico;
 import Modelo.MedicoDAO;
 import Modelo.Paciente;
@@ -41,6 +43,11 @@ public class Controlador extends HttpServlet {
 
         /* Variables medico */
         int idMedico;
+        /* Variables HistoriaMedica */
+        HistoriaMedica hm = new HistoriaMedica();
+        HistoriaMedicaDAO hmdao = new HistoriaMedicaDAO();
+        
+        
         /* VARIABLES CONTROLADOR */
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
@@ -62,9 +69,14 @@ public class Controlador extends HttpServlet {
                     dispatcher.forward(request, response);
                     break;
                 case "VerHistorialMedico":  //Pendiente
-                    System.out.println("Historial Paciente");
+                    idPaciente = Integer.parseInt(request.getParameter("idPaciente"));
+                    System.out.println("Historial Paciente: " + idPaciente);
                     
-                                        
+                    List listaHM = hmdao.listar(idPaciente);
+                    System.out.println(listaHM.size());
+                    dispatcher = request.getRequestDispatcher("historialMedico.jsp");
+                    request.setAttribute("historias", listaHM);
+                    dispatcher.forward(request, response);            
                     break;
                 case "EditarPaciente": //OK
                     System.out.println("Editar paciente");
