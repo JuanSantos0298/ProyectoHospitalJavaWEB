@@ -15,7 +15,7 @@
         <title>Listado Pacientes</title>
     </head>
     <body>
-        <!-- BINVENIDA -->
+        <!-- BIENVENIDA -->
         <header class="py-1" style="background-color: #5080BF">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
@@ -64,10 +64,10 @@
                                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                   Acciones
                                 </a>
-                                
                             
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                  <li><a class="dropdown-item" href="Controlador?menu=Pacientes&accion=VerHistorialMedico&idPaciente=${paciente.getIdPaciente()}">Historial Médico</a></li>
+                                  <li><a class="dropdown-item" href="Controlador?menu=Pacientes&accion=VerHistorialMedico&idPaciente=${paciente.getIdPaciente()}">Historial médico</a></li>
+                                  <li><a class="dropdown-item" href="Controlador?menu=Pacientes&accion=NuevaHistoriaMedica&idPaciente=${paciente.getIdPaciente()}&idMedico=${idMedico}">Agregar historial</a></li>
                                   <li><a class="dropdown-item" href="Controlador?menu=Pacientes&accion=EditarPaciente&idPaciente=${paciente.getIdPaciente()}">Editar</a></li>
                                   <li><a class="dropdown-item"  href="Controlador?menu=Pacientes&accion=EliminarPaciente&idPaciente=${paciente.getIdPaciente()}">Eliminar</a></li>
                                 </ul>

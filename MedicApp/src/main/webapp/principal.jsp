@@ -29,10 +29,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-dark" style="color: white; border: none; margin-left: 15px" href="Controlador?menu=Resumen" target="myFrame">Resumen</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-outline-dark" style="color: white; border: none; margin-left: 15px" href="Controlador?menu=Pacientes&accion=Listar" target="myFrame">Listado paciente</a>
+                        <a class="nav-link btn btn-outline-dark" style="color: white; border: none; margin-left: 15px" href="Controlador?menu=Pacientes&accion=Listar&idMedico=${medico.getIdMedico()}" target="myFrame">Listado paciente</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link btn btn-outline-dark" style="color: white; border: none; margin-left: 15px" href="Controlador?menu=Pacientes&accion=NuevoPaciente&idMedico=${medico.getIdMedico()}" target="myFrame">Nuevo paciente</a>
@@ -60,12 +57,11 @@
             </div>
         </div>
     </nav>
-    
     <div class="m-4" style="height: 850px">
         <iframe name="myFrame" style="height: 100%; width: 100%; border: none"></iframe>
     </div>
     
-                
+                 
     <!-- Footer -->
     <footer class="text-center text-white" style="background-color: #2F3D59;">
       <!-- Grid container -->

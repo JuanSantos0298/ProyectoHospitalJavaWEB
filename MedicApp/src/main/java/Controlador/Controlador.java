@@ -47,6 +47,9 @@ public class Controlador extends HttpServlet {
         HistoriaMedica hm = new HistoriaMedica();
         HistoriaMedicaDAO hmdao = new HistoriaMedicaDAO();
         
+        String peso, altura, antecedentes, motivoConsulta, alergias, fechaIngreso, medicacion;
+        
+        
         
         /* VARIABLES CONTROLADOR */
         String menu = request.getParameter("menu");
@@ -64,14 +67,17 @@ public class Controlador extends HttpServlet {
                 case "Listar": //OK
                     System.out.println("Listar pacientes");
                     List lista = pacientedao.listar();
-                    dispatcher = request.getRequestDispatcher("pacientes.jsp");
+                    idMedico = Integer.parseInt(request.getParameter("idMedico"));
+                    request.setAttribute("idMedico", idMedico);
                     request.setAttribute("pacientes", lista);
+                    dispatcher = request.getRequestDispatcher("pacientes.jsp");
                     dispatcher.forward(request, response);
                     break;
                 case "VerHistorialMedico":  //Pendiente
                     idPaciente = Integer.parseInt(request.getParameter("idPaciente"));
                     System.out.println("Historial Paciente: " + idPaciente);
-                    
+                    Paciente pacienteHistoria = pacientedao.listarId(idPaciente);
+                    request.setAttribute("paciente", pacienteHistoria);
                     List listaHM = hmdao.listar(idPaciente);
                     System.out.println(listaHM.size());
                     dispatcher = request.getRequestDispatcher("historialMedico.jsp");
@@ -166,6 +172,47 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("pacientes", lista);
                     dispatcher = request.getRequestDispatcher("pacientes.jsp");
                     dispatcher.forward(request, response);
+                    break;
+                case "NuevaHistoriaMedica":
+                    System.out.println("Nueva historia clinica");
+                    idPaciente = Integer.parseInt(request.getParameter("idPaciente"));
+                    idMedico = Integer.parseInt(request.getParameter("idMedico"));
+                    System.out.println(idPaciente);
+                    System.out.println(idMedico);
+                    request.setAttribute("idMedico", idMedico);
+                    request.setAttribute("idPaciente", idPaciente);
+                    request.getRequestDispatcher("agregarHistorial.jsp").forward(request, response);
+                    break;
+                case "AgregarHistorial":
+                    System.out.print("Estoy agregando paciente");
+                    peso = request.getParameter("peso");
+                    altura = request.getParameter("altura");
+                    antecedentes = request.getParameter("antecedentes");
+                    motivoConsulta = request.getParameter("motivoConsulta");
+                    alergias = request.getParameter("alergias");
+                    fechaIngreso = request.getParameter("fechaIngreso");
+                    medicacion = request.getParameter("medicacion");
+                    
+                    idPaciente = Integer.parseInt(request.getParameter("idPaciente"));
+                    idMedico = Integer.parseInt(request.getParameter("idMedico"));
+                    
+                    hm.setPeso(peso);
+                    hm.setAltura(altura);
+                    hm.setAntecedentes(antecedentes);
+                    hm.setMotivoConsulta(motivoConsulta);
+                    hm.setAlergias(alergias);
+                    hm.setFechaIngreso(fechaIngreso);
+                    hm.setMedicacion(medicacion);
+                    hm.setHistorialMedico(idMedico);
+                    hm.setHistorialPaciente(idPaciente);
+                    
+                    hmdao.agregar(hm);
+                    
+                    listaHM = hmdao.listar(idPaciente);
+                    //System.out.println(listaHM.size());
+                    dispatcher = request.getRequestDispatcher("historialMedico.jsp");
+                    request.setAttribute("historias", listaHM);
+                    dispatcher.forward(request, response);  
                     break;
             }
         }

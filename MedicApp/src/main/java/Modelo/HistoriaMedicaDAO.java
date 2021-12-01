@@ -9,6 +9,7 @@ import Config.ConexionBD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,5 +51,29 @@ public class HistoriaMedicaDAO {
             System.out.println(e);
         }
         return lista;
+    }
+    
+    public int agregar(HistoriaMedica hm){
+        System.out.println("PacienteDAO::agregar -- Agregando paciente");
+        String sql = "INSERT INTO historialmedico(peso, altura, antecedentes, motivoConsulta, alergias, fechaIngreso, medicacion, historialPaciente, historialMedico) VALUES (?,?,?,?,?,?,?,?,?)";
+        try{
+            con=cn.getConnection();
+            ps=con.prepareStatement(sql);
+            ps.setString(1, hm.getPeso());
+            ps.setString(2, hm.getAltura());
+            ps.setString(3, hm.getAntecedentes());
+            ps.setString(4, hm.getMotivoConsulta());
+            ps.setString(5, hm.getAlergias());
+            ps.setString(6, hm.getFechaIngreso());
+            ps.setString(7, hm.getMedicacion());
+            ps.setInt(8, hm.getHistorialPaciente());
+            ps.setInt(9, hm.getHistorialMedico());
+            
+            ps.executeUpdate();
+        } catch (SQLException e){
+                    System.out.println("HistorialMedicoDAO::agregar -- Algo salio mal!:c");
+                    System.out.println(e);
+        }
+        return 1;
     }
 }

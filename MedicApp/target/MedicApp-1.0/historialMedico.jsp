@@ -25,8 +25,8 @@
         <header class="py-1" style="background-color: #5080BF">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h1 class="display-6 fw-bolder">Lista Pacientes</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">¡Gestiona tus pacientes e historias médicas!</p>
+                    <h1 class="display-6 fw-bolder">Historial Medico</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Paciente: ${paciente.getNombre()} ${paciente.getApellidoPaterno()}  ${paciente.getApellidoMaterno()}</p>
                 </div>
             </div>
         </header>
@@ -64,16 +64,7 @@
                         <td>${historia.getFechaIngreso()}</td>
                         <td>${historia.getMedicacion()}</td>                        
                         <td>
-                            <div class="dropdown">
-                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Acciones
-                                </a>
-                                
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                  <li><a class="dropdown-item" href="Controlador?menu=Pacientes&accion=EditarPaciente&idPaciente=${paciente.getIdPaciente()}">Ver</a></li>
-                                  <li><a class="dropdown-item"  href="Controlador?menu=Pacientes&accion=EliminarPaciente&idPaciente=${paciente.getIdPaciente()}">Eliminar</a></li>
-                                </ul>
-                            </div>
+                            <a href="#" class="btn btn-danger" tabindex="-1" role="button" aria-disabled="true">Eliminar</a>
                         </td>
                     </tr> 
                 </c:forEach>

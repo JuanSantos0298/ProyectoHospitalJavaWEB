@@ -20,6 +20,7 @@ public class HistoriaMedica {
     String fechaIngreso;
     String medicacion;
     int historialPaciente;
+    int historialMedico;
     
     public HistoriaMedica() {
     }
@@ -107,4 +108,13 @@ public class HistoriaMedica {
     public void setHistorialPaciente(int historialPaciente) {
         this.historialPaciente = historialPaciente;
     }
+
+    public int getHistorialMedico() {
+        return historialMedico;
+    }
+
+    public void setHistorialMedico(int historialMedico) {
+        this.historialMedico = historialMedico;
+    }
+    
 }
