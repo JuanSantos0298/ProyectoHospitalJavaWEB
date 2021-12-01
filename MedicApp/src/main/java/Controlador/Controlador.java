@@ -214,7 +214,16 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("historias", listaHM);
                     dispatcher.forward(request, response);  
                     break;
-                case "":
+                case "BuscarPaciente":
+                    System.out.println("buscar pacientes");
+                    String palabraBuscada = request.getParameter("palabraBuscada");                    
+                    idMedico = Integer.parseInt(request.getParameter("idMedico"));
+                    lista = pacientedao.buscar(palabraBuscada,idMedico);
+
+                    request.setAttribute("idMedico", idMedico);
+                    request.setAttribute("pacientes", lista);
+                    dispatcher = request.getRequestDispatcher("pacientes.jsp");
+                    dispatcher.forward(request, response);
                     break;
             }
         }

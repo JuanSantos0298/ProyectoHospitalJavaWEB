@@ -27,8 +27,9 @@
          <div class="d-grid gap-2 mt-5">
              <form action="Controlador?menu=Pacientes&accion=BuscarPaciente" method="POST">
                 <div class="input-group mb-3">
-                    <input type="text" value="Agregar" name="palabraBuscada" class="form-control" placeholder="Buscar un paciente" aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <button value="AgregarPaciente" class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>
+                    <input type="hidden" value="${idMedico}" name="idMedico" class="form-control" placeholder="Buscar un paciente" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <input type="text" value="" name="palabraBuscada" class="form-control" placeholder="Buscar un paciente" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>
                 </div>
              </form>
         </div>

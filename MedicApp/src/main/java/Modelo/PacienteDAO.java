@@ -48,7 +48,37 @@ public class PacienteDAO {
                 lista.add(paciente);
             }
         } catch (Exception e){
-        
+            System.out.println("PacienteDAO::ERROR - " + e);
+        }
+        return lista;
+    }
+    
+    public List buscar(String clave, int idMedico){
+        String sql = "SELECT * FROM paciente WHERE nombre LIKE '%"+clave+"%'";
+        System.out.println(sql);
+
+        List<Paciente> lista = new ArrayList<>();
+        try{
+            con=cn.getConnection();
+            ps=con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                Paciente paciente = new Paciente();
+                paciente.setIdPaciente(rs.getInt(1));
+                paciente.setNombre(rs.getString(2));
+                paciente.setApellidoPaterno(rs.getString(3));
+                paciente.setApellidoMaterno(rs.getString(4));
+                paciente.setTelefono(rs.getString(5));
+                paciente.setDireccion(rs.getString(6));
+                paciente.setSeguroMedico(rs.getString(7));
+                paciente.setEdad(rs.getInt(8));
+                paciente.setEstadoCivil(rs.getString(9));
+                
+                lista.add(paciente);
+            }
+        } catch (Exception e){
+            System.out.println("PacienteDAO::ERROR - " + e);
+
         }
         return lista;
     }
@@ -134,7 +164,7 @@ public class PacienteDAO {
              ps = con.prepareStatement(sql);
              ps.executeUpdate();
          } catch (SQLException e){
-             
+             System.out.println("Error " + e);
          }
      }
 }
