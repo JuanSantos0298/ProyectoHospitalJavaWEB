@@ -77,7 +77,7 @@
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-center" style="background-color: #EE6E73 ">
+        <nav class="navbar navbar-expand-lg navbar-center" style="background-color: #5080BF">
         <div class="container-md" class="text-center">
             <a class="navbar-brand" style="color: white;">Iniciar sesion</a>
         </div>
@@ -93,7 +93,6 @@
                     <input type="password" class="form-control" id="exampleInputPassword1" name="password">
                 </div>
                 <button type="submit" name="accion" value="Ingresar">Ingresar</button>
-                <span class="registrar"><a href="">Crear cuenta nueva</a></span>
             </form>
         </div>        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

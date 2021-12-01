@@ -214,6 +214,8 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("historias", listaHM);
                     dispatcher.forward(request, response);  
                     break;
+                case "":
+                    break;
             }
         }
     }
