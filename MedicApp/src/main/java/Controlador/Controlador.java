@@ -46,7 +46,7 @@ public class Controlador extends HttpServlet {
         /* Variables HistoriaMedica */
         HistoriaMedica hm = new HistoriaMedica();
         HistoriaMedicaDAO hmdao = new HistoriaMedicaDAO();
-        
+        int idHistoria;
         String peso, altura, antecedentes, motivoConsulta, alergias, fechaIngreso, medicacion;
         
         
@@ -224,6 +224,22 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("pacientes", lista);
                     dispatcher = request.getRequestDispatcher("pacientes.jsp");
                     dispatcher.forward(request, response);
+                    break;
+                case "EliminarHistoria":
+                    
+                    idPaciente = Integer.parseInt(request.getParameter("idPaciente"));
+                    idHistoria = Integer.parseInt(request.getParameter("idHistoria"));
+                    paciente = pacientedao.listarId(idPaciente);
+                    request.setAttribute("paciente", paciente);
+
+                    hmdao.delete(idHistoria);
+                    listaHM = hmdao.listar(idPaciente);
+                    //System.out.println(listaHM.size());
+                    dispatcher = request.getRequestDispatcher("historialMedico.jsp");
+                    request.setAttribute("historias", listaHM);
+                    dispatcher.forward(request, response);
+                    System.out.println("Eliminar historia");
+
                     break;
             }
         }

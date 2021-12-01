@@ -23,7 +23,7 @@
         </header>
         
         <div class="container mt-5 ">
-            <form action="Controlador?menu=Pacientes" method="POST">
+            <form action="Controlador?menu=Pacientes&accion=Agregar Paciente" method="POST">
                 <input type="hidden" class="form-control" name="idMedico" value="${idMedico}">
                 <div class="row align-items-start">
                     <div class="col">
@@ -73,7 +73,7 @@
                     </div>
                 </div>
                 <div class="d-grid gap-2 mt-5">
-                    <input type="submit" name="accion" value = "Agregar Paciente" class="btn">
+                    <button style="color: white; background-color: #26a69a " class="btn float-end" type="submit">Agregar paciente</button>
                 </div>
                 
                 

@@ -76,4 +76,17 @@ public class HistoriaMedicaDAO {
         }
         return 1;
     }
+    
+    public void delete(int id){
+         System.out.println("PacienteDAO::EliminarHistorial");
+         String sql = "delete from historialmedico where id_historial = "+id+"";
+         System.out.println(sql);
+         try{   
+             con = cn.getConnection();
+             ps = con.prepareStatement(sql);
+             ps.executeUpdate();
+         } catch (SQLException e){
+             System.out.println("Error " + e);
+         }
+     }
 }

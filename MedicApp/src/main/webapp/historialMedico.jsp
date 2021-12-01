@@ -31,12 +31,7 @@
             </div>
         </header>
          <div class="d-grid gap-2 mt-5">
-             <form action="Controlador?menu=Pacientes" method="POST">
-                <div class="input-group mb-3">
-                    <input type="text" value="Agregar" name="palabraBuscada" class="form-control" placeholder="Buscar un paciente" aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <button value="AgregarPaciente" class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>
-                </div>
-             </form>
+            
         </div>
         <table class="table table-striped table-hover">
             <thead>
@@ -64,7 +59,7 @@
                         <td>${historia.getFechaIngreso()}</td>
                         <td>${historia.getMedicacion()}</td>                        
                         <td>
-                            <a href="#" class="btn btn-danger" tabindex="-1" role="button" aria-disabled="true">Eliminar</a>
+                            <a href="Controlador?menu=Pacientes&accion=EliminarHistoria&idHistoria=${historia.getIdHistoria()}&idPaciente=${paciente.getIdPaciente()}" class="btn btn-danger" tabindex="-1" role="button" aria-disabled="true">Eliminar</a>
                         </td>
                     </tr> 
                 </c:forEach>
